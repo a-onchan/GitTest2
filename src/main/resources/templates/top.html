@@ -1,0 +1,42 @@
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Spring Boot Sample Site</title>
+</head>
+<body>
+<ul>
+  <li>「私の名前は、<span th:text="${name}">わさび</span>です。」 </li>
+  <li><span th:text="${age}">20</span>才です。 </li>
+  <span th:text="${dbtest}"></span>
+</ul>
+<form method="get" th:action="@{/form}">
+  <input type="number" name="num" max="9999999" min="0"/>
+  <input type="text" name="name" placeholder="名前" />
+  <input type="text" name="age" placeholder="年齢" />
+  <input type="submit" />
+<!-- <a th:href="@{/top}" name="submit" value = 1 onclick="submit();"><img src = "kaigi_shinken_businessmen.png"/></a> -->   
+<!-- <input type="radio" name="page" value="3" onclick="submit();"> -->   
+</form>
+
+<!-- 画像がクリックされたらValueを返す -->
+<form method="get" th:action="@{/value}">
+     <input type = "image" src = "kaigi_shinken_businessmen.png" name="page" value=3 />
+</form>
+
+                <div th:each="dbtest2 : ${dbtests}">
+                  <h1>
+                  <span th:text="${dbtest2.name}"></span> <span th:text="${dbtest2.age}"></span>
+                  </h1>
+                </div>
+
+ <li>PostMapping用</li>
+<form method="post" th:action="@{/post}">
+  <input type="text" name="name" placeholder="名前" />
+  <input type="text" name="age" placeholder="年齢" />
+  <input type="submit"/>
+ 
+ <!--  <div th:with="X=1"></div> -->
+</form>
+
+</body>
+</html>
